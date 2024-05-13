@@ -69,7 +69,7 @@ import type EsbuildConfig from './_types/EsbuildConfig';
 })();
 
 process.on('uncaughtException', (error) => {
-	console.error('> = = = = = = = = = = < Uncaught exception > = = = = = = = = = = <');
+	console.error('\n> = = = = = = = = = = < Uncaught exception > = = = = = = = = = = <');
 	console.error(error);
-	console.error('> = = = = = = = = = = < Uncaught exception > = = = = = = = = = = <');
+	console.error('> = = = = = = = = = = < Uncaught exception > = = = = = = = = = = <\n');
 });
