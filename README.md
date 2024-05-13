@@ -27,7 +27,7 @@ the package was only tested on Windows, and may not work on other platforms
     ```
 
 4. After that is done, you have to start `esbuild-wrapper` again
-    > now the script minifies and bundles the script
+    > now the script minifies and bundles the script to the desired location
     ```
     npm run esbuild
     ```
