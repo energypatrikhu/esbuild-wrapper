@@ -22,5 +22,8 @@
 		"@energypatrikhu/node-utils": "^0.1.8",
 		"esbuild": "^0.21.2",
 		"ora-classic": "^5.4.2"
+	},
+	"publishConfig": {
+		"access": "public"
 	}
 }
