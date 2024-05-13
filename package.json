@@ -14,7 +14,7 @@
 		"build"
 	],
 	"devDependencies": {
-		"@types/node": "^20.12.8",
+		"@types/node": "^20.12.11",
 		"np": "^10.0.5",
 		"typescript": "^5.4.5"
 	},
