@@ -1,0 +1,26 @@
+{
+	"name": "@energypatrikhu/esbuild-wrapper",
+	"version": "0.0.0",
+	"main": "build/index.js",
+	"bin": {
+		"esbuild-wrapper": "build/index.js"
+	},
+	"scripts": {
+		"build": "node esbuild.config.mjs",
+		"start": "node build/index.js",
+		"np": "npm run build && np --no-tests"
+	},
+	"files": [
+		"build"
+	],
+	"devDependencies": {
+		"@types/node": "^20.12.8",
+		"np": "^10.0.5",
+		"typescript": "^5.4.5"
+	},
+	"dependencies": {
+		"@energypatrikhu/node-utils": "^0.1.8",
+		"esbuild": "^0.21.2",
+		"ora-classic": "^5.4.2"
+	}
+}
