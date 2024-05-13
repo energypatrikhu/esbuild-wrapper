@@ -17,9 +17,7 @@ try {
 	throw error;
 }
 
-console.log(
-	`\nMinifying '${__sourceFile}' into '${__destinationFile}' file...`,
-);
+console.log(`\nMinifying '${__sourceFile}' into '${__destinationFile}' file...`);
 try {
 	const packageJson = JSON.parse(readFileSync('./package.json', 'utf-8'));
 	await build({
@@ -45,19 +43,13 @@ try {
 	});
 	console.log(`Minified '${__sourceFile}' into '${__destinationFile}' file`);
 } catch (error) {
-	console.error(
-		`Failed to minify '${__sourceFile}' into '${__destinationFile}' file`,
-	);
+	console.error(`Failed to minify '${__sourceFile}' into '${__destinationFile}' file`);
 	throw error;
 }
 
 console.log('\nAdding shebang...');
 try {
-	writeFileSync(
-		__destinationFile,
-		prefix + EOL + readFileSync(__destinationFile, 'utf-8'),
-		'utf-8',
-	);
+	writeFileSync(__destinationFile, prefix + EOL + readFileSync(__destinationFile, 'utf-8'), 'utf-8');
 	console.log('Added shebang');
 } catch (error) {
 	console.error('Failed to add shebang');

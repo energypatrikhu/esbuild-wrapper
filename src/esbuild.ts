@@ -2,11 +2,7 @@ import { build } from 'esbuild';
 import { readFileSync } from 'node:fs';
 import type { EsbuildMinifyOptions } from './_types/EsbuildConfig';
 
-export default async function esbuildMinify(
-	entrypoint: string,
-	destination: string,
-	options: EsbuildMinifyOptions,
-) {
+export default async function esbuildMinify(entrypoint: string, destination: string, options: EsbuildMinifyOptions) {
 	const packageJson = JSON.parse(readFileSync('package.json', 'utf-8'));
 
 	await build({

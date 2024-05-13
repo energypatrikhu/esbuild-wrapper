@@ -1,12 +1,5 @@
 import { dirname, join } from 'node:path';
-import {
-	existsSync,
-	mkdirSync,
-	readFileSync,
-	readdirSync,
-	rmSync,
-	writeFileSync,
-} from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import esbuildMinify from './esbuild';
 import type EsbuildConfig from './_types/EsbuildConfig';
 
@@ -27,14 +20,8 @@ import type EsbuildConfig from './_types/EsbuildConfig';
 
 	if (!existsSync(configFile)) {
 		console.log(`'${configFile}' not found. Creating it...`);
-		writeFileSync(
-			configFile,
-			JSON.stringify(esbuildConfigDefaultEntries, null, '\t'),
-			'utf-8',
-		);
-		console.log(
-			`'${configFile}' created. Please fill in the required fields.`,
-		);
+		writeFileSync(configFile, JSON.stringify(esbuildConfigDefaultEntries, null, '\t'), 'utf-8');
+		console.log(`'${configFile}' created. Please fill in the required fields.`);
 
 		process.exit(0);
 	}
@@ -60,9 +47,7 @@ import type EsbuildConfig from './_types/EsbuildConfig';
 
 		console.log(`Removed old files from '${outFileBasepath}' folder`);
 	} catch (error) {
-		console.error(
-			`Failed to remove old files from '${outFileBasepath}' folder`,
-		);
+		console.error(`Failed to remove old files from '${outFileBasepath}' folder`);
 
 		throw error;
 	}
@@ -73,28 +58,18 @@ import type EsbuildConfig from './_types/EsbuildConfig';
 
 	console.log(`Minifying '${esbuildInputFiles}' into '${esbuildOutFile}'...`);
 	try {
-		await esbuildMinify(
-			esbuildInputFiles,
-			esbuildOutFile,
-			'options' in esbuildConfig ? esbuildConfig.options : {},
-		);
+		await esbuildMinify(esbuildInputFiles, esbuildOutFile, 'options' in esbuildConfig ? esbuildConfig.options : {});
 
 		console.log(`Minified '${esbuildInputFiles}' into '${esbuildOutFile}'`);
 	} catch (error) {
-		console.error(
-			`Failed to minify '${esbuildInputFiles}' into '${esbuildOutFile}'`,
-		);
+		console.error(`Failed to minify '${esbuildInputFiles}' into '${esbuildOutFile}'`);
 
 		throw error;
 	}
 })();
 
 process.on('uncaughtException', (error) => {
-	console.error(
-		'> = = = = = = = = = = < Uncaught exception > = = = = = = = = = = <',
-	);
+	console.error('> = = = = = = = = = = < Uncaught exception > = = = = = = = = = = <');
 	console.error(error);
-	console.error(
-		'> = = = = = = = = = = < Uncaught exception > = = = = = = = = = = <',
-	);
+	console.error('> = = = = = = = = = = < Uncaught exception > = = = = = = = = = = <');
 });
