@@ -23,6 +23,15 @@
 		"esbuild": "^0.21.2",
 		"ora-classic": "^5.4.2"
 	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/energypatrikhu/esbuild-wrapper.git"
+	},
+	"bugs": {
+		"url": "https://github.com/energypatrikhu/esbuild-wrapper/issues"
+	},
+	"homepage": "https://github.com/energypatrikhu/esbuild-wrapper",
+	"license": "MIT",
 	"publishConfig": {
 		"access": "public"
 	}
