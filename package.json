@@ -1,6 +1,6 @@
 {
 	"name": "@energypatrikhu/esbuild-wrapper",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"main": "build/index.js",
 	"bin": {
 		"esbuild-wrapper": "build/index.js"
