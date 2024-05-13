@@ -9,7 +9,6 @@ import {
 } from 'node:fs';
 import esbuildMinify from './esbuild';
 import type EsbuildConfig from './_types/EsbuildConfig';
-import oraStatus from './oraStatus';
 
 (async () => {
 	const configFile = 'esbuild.config.json';
@@ -17,6 +16,14 @@ import oraStatus from './oraStatus';
 	const esbuildConfigDefaultEntries: EsbuildConfig = {
 		inputFile: 'src/index.ts',
 		outFile: 'build/index.js',
+		options: {
+			bundle: true,
+			platform: 'node',
+			logLevel: 'warning',
+			treeShaking: true,
+			minify: true,
+			format: 'cjs',
+		},
 	};
 
 	if (!existsSync(configFile)) {
@@ -43,9 +50,7 @@ import oraStatus from './oraStatus';
 	}
 
 	// Remove old files from output folder
-	const status_removeOldFiles = oraStatus(
-		`Removing old files from '${outFileBasepath}' folder...`,
-	);
+	console.log(`\nRemoving old files from '${outFileBasepath}' folder...`);
 	try {
 		for (const file of readdirSync(outFileBasepath)) {
 			rmSync(join(outFileBasepath, file), {
@@ -53,32 +58,44 @@ import oraStatus from './oraStatus';
 				force: true,
 			});
 		}
-		status_removeOldFiles.succeed(
-			`Removed old files from '${outFileBasepath}' folder`,
-		);
-	} catch {
-		status_removeOldFiles.fail(
+
+		console.log(`Removed old files from '${outFileBasepath}' folder`);
+	} catch (error) {
+		console.error(
 			`Failed to remove old files from '${outFileBasepath}' folder`,
 		);
+
+		throw error;
 	}
 
 	// Minify file input file
 	const esbuildInputFiles = esbuildConfig.inputFile || 'src/index.ts';
 	const esbuildOutFile = esbuildConfig.outFile || 'build/index.js';
 
-	const status_minifying = oraStatus(
-		`Minifying '${esbuildInputFiles}' into '${esbuildOutFile}'...`,
-	);
-
+	console.log(`Minifying '${esbuildInputFiles}' into '${esbuildOutFile}'...`);
 	try {
-		await esbuildMinify(esbuildInputFiles, esbuildOutFile);
-
-		status_minifying.succeed(
-			`Minified '${esbuildInputFiles}' into '${esbuildOutFile}'`,
+		await esbuildMinify(
+			esbuildInputFiles,
+			esbuildOutFile,
+			'options' in esbuildConfig ? esbuildConfig.options : {},
 		);
+
+		console.log(`Minified '${esbuildInputFiles}' into '${esbuildOutFile}'`);
 	} catch (error) {
-		status_minifying.fail(
+		console.error(
 			`Failed to minify '${esbuildInputFiles}' into '${esbuildOutFile}'`,
 		);
+
+		throw error;
 	}
 })();
+
+process.on('uncaughtException', (error) => {
+	console.error(
+		'> = = = = = = = = = = < Uncaught exception > = = = = = = = = = = <',
+	);
+	console.error(error);
+	console.error(
+		'> = = = = = = = = = = < Uncaught exception > = = = = = = = = = = <',
+	);
+});
