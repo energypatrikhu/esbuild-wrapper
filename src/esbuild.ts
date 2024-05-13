@@ -12,8 +12,8 @@ export default async function esbuildMinify(
 	await build({
 		entryPoints: [entrypoint],
 		outfile: destination,
+		bundle: true,
 
-		bundle: 'bundle' in options ? options.bundle : true,
 		platform: 'platform' in options ? options.platform : 'node',
 		logLevel: 'logLevel' in options ? options.logLevel : 'warning',
 		treeShaking: 'treeShaking' in options ? options.treeShaking : true,

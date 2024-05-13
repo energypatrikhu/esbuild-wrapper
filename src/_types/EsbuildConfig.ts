@@ -7,7 +7,6 @@ export default interface EsbuildConfig {
 }
 
 export interface EsbuildMinifyOptions {
-	bundle?: boolean;
 	platform?: 'node' | 'browser';
 	minify?: boolean;
 	format?: 'cjs' | 'esm';

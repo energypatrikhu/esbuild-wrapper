@@ -36,9 +36,8 @@ the package was only tested on Windows, and may not work on other platforms
 - `inputFile`: this is the location of the main file, commonly `src/index.[ts,js]`
 - `outFile`: the path to the minified and bundled script (this most of the times does not need to be changed)
 - `options`: the options for esbuild
-    - `bundle`: whether to bundle the script or not
-    - `platform`: the platform to bundle the script for, for more information see [esbuild platform](https://esbuild.github.io/api/#platform)
-    - `minify`: whether to minify the script or not
-    - `format`: the format of the output, for more information see [esbuild format](https://esbuild.github.io/api/#format)
-    - `logLevel`: the log level to use, for more information see [esbuild logLevel](https://esbuild.github.io/api/#logLevel)
-    - `treeShaking`: whether to tree shake the output or not
+    - `platform`: the platform to bundle the script for ([esbuild platform](https://esbuild.github.io/api/#platform))
+    - `minify`: whether to minify the script or not ([esbuild minify](https://esbuild.github.io/api/#minify))
+    - `format`: the format of the output ([esbuild format](https://esbuild.github.io/api/#format))
+    - `logLevel`: the log level to use ([esbuild logLevel](https://esbuild.github.io/api/#log-level))
+    - `treeShaking`: whether to tree shake the output or not ([esbuild tree shaking](https://esbuild.github.io/api/#tree-shaking))

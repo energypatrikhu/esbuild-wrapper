@@ -17,7 +17,6 @@ import type EsbuildConfig from './_types/EsbuildConfig';
 		inputFile: 'src/index.ts',
 		outFile: 'build/index.js',
 		options: {
-			bundle: true,
 			platform: 'node',
 			logLevel: 'warning',
 			treeShaking: true,
