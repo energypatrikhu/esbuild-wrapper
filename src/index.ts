@@ -36,7 +36,7 @@ import type EsbuildConfig from './_types/EsbuildConfig';
 	}
 
 	// Remove old files from output folder
-	console.log(`\nRemoving old files from '${outFileBasepath}' folder...`);
+	console.log(`Removing old files from '${outFileBasepath}' folder...`);
 	try {
 		for (const file of readdirSync(outFileBasepath)) {
 			rmSync(join(outFileBasepath, file), {
@@ -56,7 +56,7 @@ import type EsbuildConfig from './_types/EsbuildConfig';
 	const esbuildInputFiles = esbuildConfig.inputFile || 'src/index.ts';
 	const esbuildOutFile = esbuildConfig.outFile || 'build/index.js';
 
-	console.log(`Minifying '${esbuildInputFiles}' into '${esbuildOutFile}'...`);
+	console.log(`\nMinifying '${esbuildInputFiles}' into '${esbuildOutFile}'...`);
 	try {
 		await esbuildMinify(esbuildInputFiles, esbuildOutFile, 'options' in esbuildConfig ? esbuildConfig.options : {});
 
