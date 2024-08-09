@@ -15,7 +15,7 @@ the package was only tested on Windows, and may not work on other platforms
     ```json
     {
       "scripts": {
-        "esbuild": "esbuild-wrapper"
+        "build": "esbuild-wrapper"
       }
     }
     ```
@@ -23,18 +23,18 @@ the package was only tested on Windows, and may not work on other platforms
 3. Start the script
     > this creates an example configuration file, that later can be modified to your needs
     ```
-    npm run esbuild
+    npm run build
     ```
 
 4. After that is done, you have to start `esbuild-wrapper` again
     > now the script minifies and bundles the script to the desired location
     ```
-    npm run esbuild
+    npm run build
     ```
 
 # Configuration
-- `inputFile`: this is the location of the main file, commonly `src/index.[ts,js]`
-- `outFile`: the path to the minified and bundled script (this most of the times does not need to be changed)
+- `inputFiles`: the files to bundle
+- `outDir`: the directory to output the bundled files
 - `options`: the options for esbuild
     - `platform`: the platform to bundle the script for ([esbuild platform](https://esbuild.github.io/api/#platform))
     - `minify`: whether to minify the script or not ([esbuild minify](https://esbuild.github.io/api/#minify))
