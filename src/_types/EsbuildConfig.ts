@@ -1,8 +1,8 @@
 import type { LogLevel } from 'esbuild';
 
 export default interface EsbuildConfig {
-	inputFile: string;
-	outFile: string;
+	inputFiles: string[];
+	outputDir: string;
 	options: EsbuildMinifyOptions;
 }
 
