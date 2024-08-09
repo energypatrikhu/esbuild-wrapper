@@ -1,36 +1,36 @@
 {
-	"name": "@energypatrikhu/esbuild-wrapper",
-	"version": "0.0.4",
-	"main": "build/index.js",
-	"bin": {
-		"esbuild-wrapper": "build/index.js"
-	},
-	"scripts": {
-		"build": "node esbuild.config.mjs",
-		"start": "node build/index.js",
-		"np": "npm run build && np --no-tests"
-	},
-	"files": [
-		"build"
-	],
-	"devDependencies": {
-		"@types/node": "^22.1.0",
-		"np": "^10.0.7",
-		"typescript": "^5.5.4"
-	},
-	"dependencies": {
-		"esbuild": "^0.23.0"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/energypatrikhu/esbuild-wrapper.git"
-	},
-	"bugs": {
-		"url": "https://github.com/energypatrikhu/esbuild-wrapper/issues"
-	},
-	"homepage": "https://github.com/energypatrikhu/esbuild-wrapper",
-	"license": "MIT",
-	"publishConfig": {
-		"access": "public"
-	}
+  "name": "@energypatrikhu/esbuild-wrapper",
+  "version": "0.0.4",
+  "main": "build/index.js",
+  "bin": {
+    "esbuild-wrapper": "build/index.js"
+  },
+  "scripts": {
+    "build": "node esbuild.config.mjs",
+    "start": "node build/index.js",
+    "np": "npm run build && np --no-tests --no-cleanup"
+  },
+  "files": [
+    "build"
+  ],
+  "devDependencies": {
+    "@types/node": "^22.1.0",
+    "np": "^10.0.7",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "esbuild": "^0.23.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/energypatrikhu/esbuild-wrapper.git"
+  },
+  "bugs": {
+    "url": "https://github.com/energypatrikhu/esbuild-wrapper/issues"
+  },
+  "homepage": "https://github.com/energypatrikhu/esbuild-wrapper",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
 }
