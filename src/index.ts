@@ -54,13 +54,13 @@ import type EsbuildConfig from './_types/EsbuildConfig';
   const esbuildInputFiles = esbuildConfig.inputFiles || ['src/index.ts'];
   const esbuildOutFile = esbuildConfig.outputDir || 'build';
 
-  console.log(`\nMinifying '${esbuildInputFiles}' into '${esbuildOutFile}'...`);
+  console.log(`\nMinifying scripts into '${esbuildOutFile}' folder...`);
   try {
     await esbuildMinify(esbuildInputFiles, esbuildOutFile, 'options' in esbuildConfig ? esbuildConfig.options : {});
 
-    console.log(`Minified '${esbuildInputFiles}' into '${esbuildOutFile}'`);
+    console.log(`Minified scripts into '${esbuildOutFile}' folder`);
   } catch (error) {
-    console.error(`Failed to minify '${esbuildInputFiles}' into '${esbuildOutFile}'`);
+    console.error(`Failed to minify scripts into '${esbuildOutFile}' folder`);
 
     throw error;
   }
