@@ -4,17 +4,23 @@ import type { EsbuildMinifyOptions } from './_types/EsbuildConfig';
 
 export default async function esbuildMinify(entrypoints: string[], destination: string, options: EsbuildMinifyOptions) {
   const packageJson = JSON.parse(readFileSync('package.json', 'utf-8'));
+  const platform = 'platform' in options ? options.platform : 'node';
+  const logLevel = 'logLevel' in options ? options.logLevel : 'warning';
+  const treeShaking = 'treeShaking' in options ? options.treeShaking : true;
+  const minify = 'minify' in options ? options.minify : true;
+  const format = 'format' in options ? options.format : 'cjs';
 
   await build({
     entryPoints: entrypoints,
     outdir: destination,
     bundle: true,
 
-    platform: 'platform' in options ? options.platform : 'node',
-    logLevel: 'logLevel' in options ? options.logLevel : 'warning',
-    treeShaking: 'treeShaking' in options ? options.treeShaking : true,
-    minify: 'minify' in options ? options.minify : true,
-    format: 'format' in options ? options.format : 'cjs',
+    platform,
+    logLevel,
+    treeShaking,
+    minify,
+    format,
+    outExtension: format === 'cjs' ? { '.js': '.cjs' } : { '.js': '.mjs' },
 
     external: ((): string[] => {
       const dependencies = new Set<string>();
