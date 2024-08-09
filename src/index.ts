@@ -8,7 +8,7 @@ import type EsbuildConfig from './_types/EsbuildConfig';
 
   const esbuildConfigDefaultEntries: EsbuildConfig = {
     inputFiles: ['src/index.ts'],
-    outputDir: 'build',
+    outDir: 'build',
     options: {
       platform: 'node',
       logLevel: 'warning',
@@ -29,30 +29,30 @@ import type EsbuildConfig from './_types/EsbuildConfig';
   const esbuildConfigRaw = readFileSync(configFile, 'utf-8');
   const esbuildConfig: EsbuildConfig = JSON.parse(esbuildConfigRaw);
 
-  if (!existsSync(esbuildConfig.outputDir)) {
-    mkdirSync(esbuildConfig.outputDir, { recursive: true });
+  if (!existsSync(esbuildConfig.outDir)) {
+    mkdirSync(esbuildConfig.outDir, { recursive: true });
   }
 
   // Remove old files from output folder
-  console.log(`Removing old files from '${esbuildConfig.outputDir}' folder...`);
+  console.log(`Removing old files from '${esbuildConfig.outDir}' folder...`);
   try {
-    for (const file of readdirSync(esbuildConfig.outputDir)) {
-      rmSync(join(esbuildConfig.outputDir, file), {
+    for (const file of readdirSync(esbuildConfig.outDir)) {
+      rmSync(join(esbuildConfig.outDir, file), {
         recursive: true,
         force: true,
       });
     }
 
-    console.log(`Removed old files from '${esbuildConfig.outputDir}' folder`);
+    console.log(`Removed old files from '${esbuildConfig.outDir}' folder`);
   } catch (error) {
-    console.error(`Failed to remove old files from '${esbuildConfig.outputDir}' folder`);
+    console.error(`Failed to remove old files from '${esbuildConfig.outDir}' folder`);
 
     throw error;
   }
 
   // Minify file input file
   const esbuildInputFiles = esbuildConfig.inputFiles || ['src/index.ts'];
-  const esbuildOutFile = esbuildConfig.outputDir || 'build';
+  const esbuildOutFile = esbuildConfig.outDir || 'build';
 
   console.log(`\nMinifying scripts into '${esbuildOutFile}' folder...`);
   try {
