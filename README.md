@@ -3,7 +3,7 @@
 
 # Warning
 This package is not well tested, and may not work as expected, use at your own risk,
-the package was only tested on Windows, and may not work on other platforms
+the package was tested on Windows and Linux, but may not work on other platforms
 
 # Usage
 1. Install the package
