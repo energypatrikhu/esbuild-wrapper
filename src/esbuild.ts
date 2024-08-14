@@ -9,7 +9,7 @@ export default async function esbuildMinify(entrypoints: string[], destination: 
   const treeShaking = 'treeShaking' in options ? options.treeShaking : true;
   const minify = 'minify' in options ? options.minify : true;
   const format = 'format' in options ? options.format : 'cjs';
-  const outExtension = 'outExtension' in options ? options.outExtension : 'cjs';
+  const outExtension = 'outExtension' in options ? options.outExtension : null;
 
   await build({
     entryPoints: entrypoints,
