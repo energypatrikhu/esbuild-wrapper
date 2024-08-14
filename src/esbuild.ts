@@ -9,6 +9,7 @@ export default async function esbuildMinify(entrypoints: string[], destination: 
   const treeShaking = 'treeShaking' in options ? options.treeShaking : true;
   const minify = 'minify' in options ? options.minify : true;
   const format = 'format' in options ? options.format : 'cjs';
+  const outExtension = 'outExtension' in options ? options.outExtension : 'cjs';
 
   await build({
     entryPoints: entrypoints,
@@ -20,7 +21,7 @@ export default async function esbuildMinify(entrypoints: string[], destination: 
     treeShaking,
     minify,
     format,
-    outExtension: format === 'cjs' ? { '.js': '.cjs' } : { '.js': '.mjs' },
+    outExtension: outExtension ? { '.js': `.${outExtension}` } : format === 'cjs' ? { '.js': '.cjs' } : { '.js': '.mjs' },
 
     external: ((): string[] => {
       const dependencies = new Set<string>();

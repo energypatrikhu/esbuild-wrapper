@@ -12,4 +12,5 @@ export interface EsbuildMinifyOptions {
   format?: 'cjs' | 'esm';
   logLevel?: LogLevel;
   treeShaking?: boolean;
+  outExtension?: string;
 }

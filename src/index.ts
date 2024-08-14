@@ -15,6 +15,7 @@ import type EsbuildConfig from './_types/EsbuildConfig';
       treeShaking: true,
       minify: true,
       format: 'cjs',
+      outExtension: 'js',
     },
   };
 
